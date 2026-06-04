@@ -1,74 +1,103 @@
-> **Une version améliorée de ce projet est disponible sur GitHub : [Jean-Alet/hooptrack_v2](https://github.com/Jean-Alet/hooptrack_v2)**  
-> Elle repose sur une architecture API REST avec une sécurité renforcée.
+# 🏀 ACA Basket — HoopTrack
 
-# HoopTrack
+Application web de gestion de l'équipe **Alpha Clichy Academy** (Clichy-sous-Bois, 93).  
+Gérez l'effectif, les matchs, les feuilles de match et les statistiques de la saison.
 
-**HoopTrack** est une application web PHP/MySQL de gestion d'une équipe de basketball, couvrant l'effectif, les matchs, les feuilles de match, les évaluations et les statistiques.
+---
 
-**Démo en ligne :** https://appbasket.infinityfreeapp.com/ — identifiants : `coach` / `basket`
+## ✅ Ce que l'appli permet de faire
 
-## Fonctionnalités principales
+- **Joueurs** — ajouter, modifier, suivre les statuts (Actif, Blessé, Suspendu, Absent)
+- **Matchs** — planifier les matchs, saisir les scores
+- **Feuilles de match** — composer le groupe, titulaires / remplaçants
+- **Évaluations** — noter chaque joueur après le match (/10)
+- **Statistiques** — bilan de l'équipe et stats individuelles
 
-1. **Joueurs** — ajouter, modifier, supprimer un joueur ; suivi des statuts (Actif, Blessé, Suspendu, Absent)
-2. **Matchs** — planifier, modifier et supprimer des matchs ; saisie du score et du résultat (overtime inclus)
-3. **Feuilles de match** — constituer le groupe, affecter un rôle (Titulaire / Remplaçant) et un poste à chaque joueur
-4. **Évaluations** — attribuer une note (/10) et un commentaire par joueur après chaque match
-5. **Statistiques** — bilan victoires/défaites de l'équipe ; par joueur : titularisations, remplacements, moyenne de note, % de victoires, matchs consécutifs
-6. **Authentification** — connexion par login/mot de passe (bcrypt), session PHP, déconnexion
+---
 
-## Structure du projet
+## 🚀 Installation (étape par étape)
 
-- `index.php` — redirige vers la page de connexion
-- `pages/` — pages d'affichage (`*_disp.php`)
-- `core/` — traitements POST (un fichier par action)
-- `includes/` — composants réutilisables : connexion PDO (`_linkpdo.php`), requêtes SQL (`_queries.php`), protection de session (`_session.php`), fragments HTML
-- `css/` — feuille de style et logo
-- `data/basketball.sql` — dump complet de la base de données
+### Ce dont tu as besoin
+- Un ordinateur (Windows, Mac ou Linux)
+- Une connexion internet
 
-### Flux d'une requête
+---
 
-```
-Navigateur → pages/*_disp.php  →  core/*.php  →  includes/_queries.php  →  MySQL
-```
+### Étape 1 — Télécharger le projet
 
-## Base de données
+1. Clique sur le bouton vert **"Code"** en haut de cette page GitHub
+2. Clique sur **"Download ZIP"**
+3. Dézippe le fichier téléchargé sur ton bureau
 
-Quatre tables composent le schéma :
+---
 
-- `joueur` — num_licence (PK), nom, prénom, date de naissance, taille, poids, nationalité, statut, commentaires
-- `match` — id_match (PK auto), date, équipe adverse, lieu, résultat, scores, overtime
-- `feuille_match` — clé primaire composée (id_match, num_licence), rôle, poste, note, commentaire ; suppressions en cascade
-- `utilisateur` — login, hash bcrypt du mot de passe
+### Étape 2 — Créer un hébergement gratuit
 
-## Installation locale
+1. Va sur **[infinityfree.com](https://infinityfree.com)**
+2. Crée un compte gratuit
+3. Note bien :
+   - Ton **nom de domaine** (ex: `monsite.infinityfreeapp.com`)
+   - Ton **nom d'utilisateur FTP**
+   - Ton **mot de passe FTP**
+   - Le **serveur FTP** (ex: `ftpupload.net`)
 
-Prérequis : PHP 8.x, MySQL / MariaDB, serveur web local (XAMPP, Laragon…)
+---
 
-```bash
-# Cloner le dépôt dans le dossier web du serveur
-git clone https://github.com/Jean-Alet/hooptrack.git
+### Étape 3 — Créer la base de données
 
-# Créer la base et importer le schéma
-mysql -u root -e "CREATE DATABASE basketball CHARACTER SET utf8mb4;"
-mysql -u root basketball < data/basketball.sql
+1. Dans ton espace InfinityFree, clique sur **"MySQL Databases"**
+2. Crée une nouvelle base de données, note :
+   - Le **nom de la base** (ex: `epiz_12345_basketball`)
+   - Le **nom d'utilisateur** (ex: `epiz_12345_user`)
+   - Le **mot de passe**
+   - Le **serveur MySQL** (ex: `sql200.infinityfree.com`)
+3. Clique sur **"phpMyAdmin"**
+4. Sélectionne ta base à gauche, clique sur **"Importer"**
+5. Choisis le fichier `data/basketball.sql` dans le dossier dézippé
+6. Clique sur **"Exécuter"**
 
-# Adapter la connexion PDO dans includes/_linkpdo.php
-# puis ouvrir http://localhost/hooptrack/
-```
+---
 
-## Sécurité
+### Étape 4 — Configurer la connexion
 
-- Pages protégées par vérification de session (`_session.php`)
-- Mots de passe hachés avec `password_hash` (bcrypt), vérifiés avec `password_verify`
-- Requêtes SQL via PDO avec paramètres liés — aucune concaténation directe
-- Valeurs HTML échappées avec `htmlspecialchars`
-- Validation des données POST avant toute insertion (champs obligatoires, valeurs d'enum, types numériques)
+1. Dans le dossier dézippé, ouvre le fichier `includes/_linkpdo.php` avec le Bloc-notes
+2. Remplace les valeurs par les tiennes :
 
-## Technologies
+$host = 'sql200.infinityfree.com';
+$dbname = 'epiz_12345_basketball';
+$user = 'epiz_12345_user';
+$password = 'TON_MOT_DE_PASSE';
 
-- PHP 8.x, MySQL / MariaDB, PDO
-- HTML / CSS (sans framework JS)
+3. Enregistre le fichier
 
-## Licence
+---
 
-Ce projet est sous licence **CC BY-NC 4.0** — utilisation personnelle et académique autorisée avec attribution ; toute utilisation commerciale est interdite sans accord explicite de l'auteur.
+### Étape 5 — Envoyer les fichiers en ligne
+
+1. Télécharge **FileZilla** (gratuit) : [filezilla-project.org](https://filezilla-project.org)
+2. Ouvre FileZilla et connecte-toi :
+   - **Hôte** : ton serveur FTP
+   - **Identifiant** : ton nom d'utilisateur FTP
+   - **Mot de passe** : ton mot de passe FTP
+   - **Port** : 21
+3. Dans la partie droite (serveur), va dans le dossier `htdocs`
+4. Sélectionne tous les fichiers et glisse-les vers la droite
+
+---
+
+### Étape 6 — Se connecter
+
+Ouvre ton navigateur et va sur ton adresse (ex: `monsite.infinityfreeapp.com`)
+
+Identifiants par défaut :
+- **Login** : `coach`
+- **Mot de passe** : `basket`
+
+> ⚠️ Change le mot de passe dès ta première connexion !
+
+---
+
+## 📄 Licence
+
+Basé sur [HoopTrack v1](https://github.com/Jean-Alet/hooptrack_v1) — Licence CC BY-NC 4.0  
+Adapté pour l'Alpha Clichy Academy (ACA Basket)
