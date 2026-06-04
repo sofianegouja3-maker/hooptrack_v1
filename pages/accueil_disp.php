@@ -10,7 +10,8 @@
 <?php include '../includes/_nav.php'; ?>
 <header class="container">
     <div>
-        <h1>Application de gestion d'une équipe de basketball</h1>
+        <h1>🏀 ACA Basket — Alpha Clichy Academy</h1>
+<p style="color:#7f8c8d; margin-top:8px;">Gestion de l'équipe — Clichy-sous-Bois (93)</p>
     </div>
 </header>
 
