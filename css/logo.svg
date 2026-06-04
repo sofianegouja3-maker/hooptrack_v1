@@ -1,32 +1,14 @@
-<svg width="460" height="360" viewBox="0 0 460 360" xmlns="http://www.w3.org/2000/svg">
-
-  <rect x="10" y="10" width="440" height="340" rx="48" fill="#FFFFFF"/>
-
-  <defs>
-    <clipPath id="basketClip">
-      <circle cx="180" cy="200" r="95"/>
-    </clipPath>
-  </defs>
-
-  <circle cx="180" cy="200" r="95" fill="#F57C00"/>
-
-  <g clip-path="url(#basketClip)">
-    <path d="M85 200h190" stroke="#000000" stroke-width="9"/>
-    <path d="M180 105v190" stroke="#000000" stroke-width="9"/>
-    <path d="M120 135c60 50 60 130 0 180" stroke="#000000" stroke-width="9" fill="none"/>
-    <path d="M240 135c-60 50-60 130 0 180" stroke="#000000" stroke-width="9" fill="none"/>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="100" cy="100" r="95" fill="#1a1a2e"/>
+  <circle cx="100" cy="100" r="88" fill="#16213e"/>
+  <circle cx="100" cy="85" r="38" fill="#e8621a"/>
+  <g stroke="#1a1a2e" stroke-width="2.5" fill="none">
+    <path d="M62 85h76"/>
+    <path d="M100 47v76"/>
+    <path d="M75 52c18 15 18 48 0 66"/>
+    <path d="M125 52c-18 15-18 48 0 66"/>
   </g>
-
-  <rect x="250" y="100" width="150" height="200" rx="20" fill="#111111"/>
-  <rect x="285" y="70" width="80" height="40" rx="12" fill="#111111"/>
-  <rect x="297" y="80" width="56" height="20" rx="8" fill="#FFFFFF"/>
-
-  <circle cx="285" cy="200" r="15" stroke="#FFFFFF" stroke-width="5" fill="none"/>
-
-  <line x1="330" y1="170" x2="355" y2="195" stroke="#FFFFFF" stroke-width="5"/>
-  <line x1="355" y1="170" x2="330" y2="195" stroke="#FFFFFF" stroke-width="5"/>
-
-  <path d="M285 245c35 0 55-18 70-35" stroke="#FFFFFF" stroke-width="5" fill="none"/>
-  <polygon points="345,210 360,200 352,220" fill="#FFFFFF"/>
-
+  <text x="100" y="148" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="22" font-weight="900" fill="#e8621a" letter-spacing="3">ACA</text>
+  <text x="100" y="168" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="600" fill="#ffffff" letter-spacing="1.5">BASKET</text>
+  <circle cx="100" cy="100" r="95" fill="none" stroke="#e8621a" stroke-width="3"/>
 </svg>
